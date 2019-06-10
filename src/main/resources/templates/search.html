@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <form class="inline-form" method="GET" action="/search">
+        <div class="form-control">
+            <label>Name</label>
+            <input th:value="${n}" name="n">
+        </div>
+
+        <div class="form-control">
+            <input type="submit" value="search">
+        </div>
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="data: ${goods}" th:if="${data[0]} == ${n}">
+            <tr>
+                <td th:text="${data[0]}">...</td>
+                <td th:text="${data[1]}">...</td>
+                <td th:text="${data[2]}">...</td>
+                <td th:text="${data[3]}">...</td>
+            </tr>
+        </th:block>
+        </tbody>
+        
+    </table>
+</div>
+</body>
+</html>

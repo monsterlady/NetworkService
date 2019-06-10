@@ -1,0 +1,42 @@
+* {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+input {
+    margin: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    line-height: 1.11428571em;
+    padding: .67857143em 1em;
+    font-size: 1em;
+    background: #fff;
+    border: 1px solid rgba(34, 36, 38, .15);
+    color: rgba(0, 0, 0, .87);
+    border-radius: .28571429rem;
+    -webkit-box-shadow: 0 0 0 0 transparent inset;
+    box-shadow: 0 0 0 0 transparent inset;
+    -webkit-transition: color .1s ease, border-color .1s ease;
+    transition: color .1s ease, border-color .1s ease;
+}
+
+.container {
+    margin: 20px auto;
+    width: 960px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+form .form-control {
+    margin-top: 1em;
+}
+
+form.inline-form .form-control {
+    display: inline-block;
+    margin-right: 1em;
+}

@@ -23,7 +23,7 @@
                         <h1 class="pricingTable-firstTable_table__header" th:text="${user.name}">...</h1>
 
                         <ul class="pricingTable-firstTable_table__options">
-                            <li>
+                            <li th:if="${c} == 'admin'">
                                 <span>Password:</span>
                                 <span th:text="${user.password}">...</span>
                             </li>

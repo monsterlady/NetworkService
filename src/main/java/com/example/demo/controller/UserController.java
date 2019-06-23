@@ -8,13 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class UserController {
-
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -48,15 +50,20 @@ public class UserController {
 
         if ("admin".equals(username) && "123456".equals(password)) {
             session.setAttribute("user", username);
+
             return "redirect:/home";
         } else {
+
             return "redirect:/login";
         }
     }
 
     @GetMapping("/user-list")
-    public String userList(Model model) {
+    public String userList(Model model, HttpServletRequest request) {
+        Cookie cookie = WebUtils.getCookie(request, "username");
+        String currentUsername = cookie.getValue();
         List<User> users = userService.getUserList();
+        model.addAttribute("c",currentUsername);
         model.addAttribute("users", users);
         return "user-list";
     }

@@ -1,0 +1,5 @@
+* 商品库存管理功能，用户分为admin和普通user，admin能够看到所有user的商品，并且可以修改和删除，普通用户只能看到自己的商品和编辑/删除。 
+* user account:   user1 / password1
+* Admin account: admin / adminPassword1
+* 通过spring security  注入InMemoryUserDetailsManager来管理用户，包括登录和注册，然后再controller里注入service来对商品进行管理
+* 退出时情况cookie

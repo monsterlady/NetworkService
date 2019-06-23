@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+
+        <div style="width: 100%;padding-right: 36px;">
+            <a href="/logout" style="float: right;">Logout</a>
+            <span th:text="${username}" style="float: right;padding-right: 12px;">...</span>
+        </div>
+
+        <div class="pricingTable">
+            <h2 class="pricingTable-title">All of the users list</h2>
+            <ul class="pricingTable-firstTable">
+                <th:block th:each="user: ${users}">
+                    <li class="pricingTable-firstTable_table">
+                        <h1 class="pricingTable-firstTable_table__header" th:text="${user.name}">...</h1>
+
+                        <ul class="pricingTable-firstTable_table__options">
+                            <li>
+                                <span>Password:</span>
+                                <span th:text="${user.password}">...</span>
+                            </li>
+                            <li>
+                                <span>Role:</span>
+                                <span th:text="${user.role}">...</span>
+                            </li>
+                        </ul>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

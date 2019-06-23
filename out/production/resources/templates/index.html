@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+
+        <div class="ttt">
+            <a href="/user-list">All Users</a>
+            <b style="font-style: italic">
+                <span th:text="${username}">...</span>
+            </b>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <div class="pricingTable">
+            <h2 class="pricingTable-title">All of the items list</h2>
+            <h3 class="pricingTable-subtitle">Every item comes with a 30-day free trial.</h3>
+
+            <div style="text-align: center;margin-bottom: 36px;">
+                <form class="inline-form" method="GET" action="/search">
+                    <div class="form-control" style="display: inline-block;">
+                        <label>Name</label>
+                        <input th:value="${n}" name="n">
+                    </div>
+
+                    <div class="form-control" style="display: inline-block;">
+                        <input type="submit" value="search">
+                    </div>
+                </form>
+            </div>
+
+            <ul class="pricingTable-firstTable">
+                <th:block th:each="good: ${goods}">
+                    <li class="pricingTable-firstTable_table">
+                        <h1 class="pricingTable-firstTable_table__header" th:text="${good.name}">...</h1>
+                        <p class="pricingTable-firstTable_table__pricing">
+                            <span>$</span><span th:text="${good.price}">...</span><span>Month</span>
+                        </p>
+                        <ul class="pricingTable-firstTable_table__options">
+                            <li th:if="${username} == 'admin'">
+                                <span>User:</span>
+                                <span th:text="${good.username}">...</span>
+                            </li>
+                            <li>
+                                <span>Stock:</span>
+                                <span th:text="${good.stock}">...</span>
+                            </li>
+                            <li>
+                                <span>Category:</span>
+                                <span th:text="${good.category}">...</span>
+                            </li>
+                        </ul>
+                        <div class="pricingTable-firstTable_table__getstart">
+                            <a class="a-details" th:href="@{/single/{goodId}(goodId=${good.id})}">Details</a>
+                        </div>
+
+                        <div class="pricingTable-firstTable_table__getstart delete">
+                            <a class="a-details" th:href="@{/delete/{goodId}(goodId=${good.id})}">Remove</a>
+                        </div>
+                    </li>
+                </th:block>
+                <li class="pricingTable-firstTable_table">
+                    <div class="pricingTable-firstTable_table__getstart">
+                        <a class="a-details" href="/add">Add One</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

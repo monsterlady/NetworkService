@@ -1,44 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Warehouse</title>
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/index.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-<div class="container">
-    <form class="inline-form" method="GET" action="/search">
-        <div class="form-control">
-            <label>Name</label>
-            <input th:value="${n}" name="n">
+<div class="limiter">
+    <div class="container-login100">
+
+        <div style="width: 100%;padding-right: 36px;">
+            <a href="/logout" style="float: right;">Logout</a>
+            <span th:text="${username}" style="float: right;padding-right: 12px;">...</span>
         </div>
 
-        <div class="form-control">
-            <input type="submit" value="search">
+        <div class="pricingTable">
+            <h2 class="pricingTable-title">All of the items list</h2>
+            <h3 class="pricingTable-subtitle">Every item comes with a 30-day free trial.</h3>
+            <div style="text-align: center;margin-bottom: 36px;">
+                <form class="inline-form" method="GET" action="/search">
+                    <div class="form-control" style="display: inline-block;">
+                        <label>Name</label>
+                        <input th:value="${n}" name="n">
+                    </div>
+
+                    <div class="form-control" style="display: inline-block;">
+                        <input type="submit" value="search">
+                    </div>
+                </form>
+            </div>
+            <ul class="pricingTable-firstTable">
+                <th:block th:each="good: ${goods}" th:if="${good.name} == ${n}">
+                    <li class="pricingTable-firstTable_table">
+                        <h1 class="pricingTable-firstTable_table__header" th:text="${good.name}">...</h1>
+                        <p class="pricingTable-firstTable_table__pricing">
+                            <span>$</span><span th:text="${good.price}">...</span><span>Month</span>
+                        </p>
+                        <ul class="pricingTable-firstTable_table__options">
+                            <li>
+                                <span>Stock:</span>
+                                <span th:text="${good.stock}">...</span>
+                            </li>
+                            <li>
+                                <span>Category:</span>
+                                <span th:text="${good.category}">...</span>
+                            </li>
+                        </ul>
+                        <div class="pricingTable-firstTable_table__getstart">
+                            <a class="a-details" th:href="@{/single/{goodId}(goodId=${good.id})}">Details</a>
+                        </div>
+                    </li>
+                </th:block>
+            </ul>
         </div>
-    </form>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Category</th>
-        </tr>
-        </thead>
-        <tbody>
-        <th:block th:each="data: ${goods}" th:if="${data[0]} == ${n}">
-            <tr>
-                <td th:text="${data[0]}">...</td>
-                <td th:text="${data[1]}">...</td>
-                <td th:text="${data[2]}">...</td>
-                <td th:text="${data[3]}">...</td>
-            </tr>
-        </th:block>
-        </tbody>
-        
-    </table>
+    </div>
 </div>
 </body>
 </html>

@@ -80,7 +80,7 @@ public class GoodsController {
         Cookie cookie = WebUtils.getCookie(request, "username");
         String username = cookie.getValue();
         List<Good> goods = goodService.getGoods(username);
-        model.addAttribute("n", n);
+        model.addAttribute("n", n.toLowerCase());
         model.addAttribute("goods", goods);
         return "search";
     }

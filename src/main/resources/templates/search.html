@@ -31,7 +31,7 @@
                 </form>
             </div>
             <ul class="pricingTable-firstTable">
-                <th:block th:each="good: ${goods}" th:if="${good.name} == ${n}">
+                <th:block th:each="good: ${goods}" th:if="${#strings.toLowerCase(good.name)} == ${n}">
                     <li class="pricingTable-firstTable_table">
                         <h1 class="pricingTable-firstTable_table__header" th:text="${good.name}">...</h1>
                         <p class="pricingTable-firstTable_table__pricing">

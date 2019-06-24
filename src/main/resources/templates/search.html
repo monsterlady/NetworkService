@@ -38,6 +38,10 @@
                             <span>$</span><span th:text="${good.price}">...</span><span>Month</span>
                         </p>
                         <ul class="pricingTable-firstTable_table__options">
+                            <li th:if="${holder} == 'admin'">
+                                <span>User:</span>
+                                <span th:text="${good.username}">...</span>
+                            </li>
                             <li>
                                 <span>Stock:</span>
                                 <span th:text="${good.stock}">...</span>

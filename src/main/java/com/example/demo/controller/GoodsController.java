@@ -82,6 +82,7 @@ public class GoodsController {
         List<Good> goods = goodService.getGoods(username);
         model.addAttribute("n", n.toLowerCase());
         model.addAttribute("goods", goods);
+        model.addAttribute("holder",username);
         return "search";
     }
 }
